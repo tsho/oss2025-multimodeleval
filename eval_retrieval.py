@@ -7,12 +7,6 @@ Usage:
     # Evaluate all models
     python eval_retrieval.py
 
-    # Evaluate specific models only
-    python eval_retrieval.py --models kalm qwen
-
-    # Evaluate on specific tasks
-    python eval_retrieval.py --tasks NFCorpus SciFact
-
     # Use float16 to reduce memory (recommended for large models)
     python eval_retrieval.py --dtype float16
 
@@ -33,29 +27,29 @@ from sentence_transformers import SentenceTransformer
 
 
 # Model definitions
-MODELS = {
-    "kalm": {
-        "name": "KaLM-Embedding-Gemma3-12B-2511",
-        "hf_name": "tencent/KaLM-Embedding-Gemma3-12B-2511",
-        "description": "Tencent's 12B embedding model based on Gemma3",
-        "params": "12B",
-        "min_memory_gb": 24,  # Full precision
-    },
-    "qwen": {
-        "name": "Qwen3-Embedding-8B",
-        "hf_name": "Qwen/Qwen3-Embedding-8B",
-        "description": "Alibaba's 8B embedding model",
-        "params": "8B",
-        "min_memory_gb": 16,
-    },
-    "nemotron": {
-        "name": "llama-embed-nemotron-8b",
-        "hf_name": "nvidia/llama-embed-nemotron-8b",
-        "description": "NVIDIA's 8B embedding model based on LLaMA",
-        "params": "8B",
-        "min_memory_gb": 16,
-    },
-}
+# MODELS = {
+#     "kalm": {
+#         "name": "KaLM-Embedding-Gemma3-12B-2511",
+#         "hf_name": "tencent/KaLM-Embedding-Gemma3-12B-2511",
+#         "description": "Tencent's 12B embedding model based on Gemma3",
+#         "params": "12B",
+#         "min_memory_gb": 24,  # Full precision
+#     },
+#     "qwen": {
+#         "name": "Qwen3-Embedding-8B",
+#         "hf_name": "Qwen/Qwen3-Embedding-8B",
+#         "description": "Alibaba's 8B embedding model",
+#         "params": "8B",
+#         "min_memory_gb": 16,
+#     },
+#     "nemotron": {
+#         "name": "llama-embed-nemotron-8b",
+#         "hf_name": "nvidia/llama-embed-nemotron-8b",
+#         "description": "NVIDIA's 8B embedding model based on LLaMA",
+#         "params": "8B",
+#         "min_memory_gb": 16,
+#     },
+# }
 
 # Smaller models for testing (can run on most machines)
 SMALL_MODELS = {
@@ -83,7 +77,7 @@ SMALL_MODELS = {
 }
 
 # Combine all models
-ALL_MODELS = {**MODELS, **SMALL_MODELS}
+ALL_MODELS = {**SMALL_MODELS}
 
 # Evaluation tasks (Retrieval tasks)
 # English retrieval tasks (relatively lightweight)
@@ -426,8 +420,7 @@ def main():
     parser.add_argument(
         "--models",
         nargs="+",
-        choices=list(ALL_MODELS.keys()),
-        default=list(MODELS.keys()),
+        default=list(ALL_MODELS.keys()),
         help="Models to evaluate (default: kalm, qwen, nemotron). "
              "Smaller models available: minilm, bge-small, e5-small",
     )
