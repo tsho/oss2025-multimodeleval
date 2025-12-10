@@ -74,6 +74,13 @@ SMALL_MODELS = {
         "params": "118M",
         "min_memory_gb": 1,
     },
+    "ruri-v3-30m": {
+        "name": "ruri-v3-30m",
+        "hf_name": "cl-nagoya/ruri-v3-30m",
+        "description": "Japanese embedding model from Nagoya University (30M)",
+        "params": "30M",
+        "min_memory_gb": 1,
+    },
 }
 
 # Combine all models

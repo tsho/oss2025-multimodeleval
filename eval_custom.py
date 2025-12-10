@@ -51,6 +51,10 @@ MODELS = {
         "name": "multilingual-e5-small",
         "hf_name": "intfloat/multilingual-e5-small",
     },
+    "ruri-v3-30m": {
+        "name": "ruri-v3-30m",
+        "hf_name": "cl-nagoya/ruri-v3-30m",
+    },
     # "kalm": {
     #     "name": "KaLM-Embedding-Gemma3-12B-2511",
     #     "hf_name": "tencent/KaLM-Embedding-Gemma3-12B-2511",
