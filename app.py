@@ -230,8 +230,7 @@ def render_charts(df: pd.DataFrame) -> None:
                         x="model_name",
                         y="recall_at_10",
                         title="Average Recall@10 by Model",
-                        color="recall_at_10",
-                        color_continuous_scale="Greens",
+                        color="model_name",
                     )
                     fig.update_layout(xaxis_tickangle=-45)
                     st.plotly_chart(fig, use_container_width=True)
@@ -253,8 +252,7 @@ def render_charts(df: pd.DataFrame) -> None:
                         x="model_name",
                         y=mrr_col,
                         title="Average MRR by Model",
-                        color=mrr_col,
-                        color_continuous_scale="Oranges",
+                        color="model_name",
                     )
                     fig.update_layout(xaxis_tickangle=-45)
                     st.plotly_chart(fig, use_container_width=True)
